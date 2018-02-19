@@ -1,0 +1,16 @@
+{
+  "name": "crypto-dca-twilio",
+  "version": "1.0.0",
+  "description": "Simple dollar-cost averaging node app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Stevenson",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "gdax": "^0.6.0",
+    "twilio": "^3.11.3"
+  }
+}
