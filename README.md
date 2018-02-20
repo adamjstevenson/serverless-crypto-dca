@@ -8,9 +8,9 @@ Use a Node.js AWS Lambda function to purchase cryptocurrency every day via GDAX 
 
 - **Dollar-cost averaging** is a fancy term for a very simple investment strategy that essentially just means spreading your purchase equally over a given timespan to reduce volatility. Wikipedia discusses this in a lot more detail [here](https://en.wikipedia.org/wiki/Dollar_cost_averaging) if you're interested.
 
-**Crypto Markets** refers to digital currency exchanges. In this context, we'll be using the [GDAX](https://www.gdax.com) [APIs](https://docs.gdax.com/) to conduct automated trading, basically just purchasing a small amount of [Ethereum](https://www.ethereum.org/) every day. 
+- **Crypto Markets** refers to digital currency exchanges. In this context, we'll be using the [GDAX](https://www.gdax.com) [APIs](https://docs.gdax.com/) to conduct automated trading, basically just purchasing a small amount of [Ethereum](https://www.ethereum.org/) every day. 
 
-## Big important disclaimer
+## Big important disclaimer!
 
 This is provided as an example, but I'm absolutely not giving investment advice and provide no warranty for this application. You should use at your own risk and be prepared to lose all money that you might choose to invest in any cryptocurrency. As Kai Ryssdal would say, markets go down, too. 📉
 
