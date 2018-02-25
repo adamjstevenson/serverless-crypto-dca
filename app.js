@@ -22,31 +22,58 @@ const handler = (event, context, callback) => {
   );
 
   // Check the latest price of ETH
-  // Later we'll send a buy order instead
-  gdaxClient.getProductOrderBook(
+  gdaxClient.getProductTicker(
     'ETH-USD'
   )
   .then(data => {
-    sendMessage(data.asks[0][0]);
+    // Determine what $10 of ETH costs
+    const price = (10/data.price);
+    // Return smallest unit available for purchase
+    const orderSize = price.toString().substr(0,10);
+    
+    // Place a buy order
+    buyOrder(orderSize, data.price);
   })
-  .catch(error => {
-    res.status(500);
-    res.send(err.toString());
+  .catch(err => {
+    // Dump the entire error and send failure notification
+    console.error(err);
+    sendSMS("Unable to get ETH ticker price. Response from GDAX: "+err.response.statusMessage+ ", "+err.data.message);
   });
 
-  // Send SMS
-  function sendMessage(last_ask){
+  // Place a buy order
+  function buyOrder(orderSize, currentPrice){
+    const args = {
+      'product_id': 'ETH-USD',
+      'type': 'market',
+      'side': 'buys',
+      'size': orderSize
+    }
+
+    gdaxClient.buy(args)
+    .then(data => {
+      // Send success notification
+      sendSMS("💸 Purchased "+orderSize+" ETH! The current USD price of ETH is $"+currentPrice.substr(0,6)+".");
+    })
+    .catch(err => {
+      // Dump the entire error and send failure notification
+      console.error(err);
+      sendSMS("Unable to place buy order for ETH. Response from GDAX: "+err.response.statusMessage+ ", "+err.data.message);
+    });
+  }
+
+  // Send SMS notification
+  function sendSMS(message){
     twilioClient.messages.create({
       to: process.env.MY_NUMBER,
       from: process.env.TWILIO_SMS_NUMBER,
-      body: 'The current price for ETH is $'+last_ask+'. 💸'
+      body: message
     })
-    .then(message => {
-      console.log(message);
+    .then(msg => {
+      // Log the message from Twilio
+      console.log(msg);
     })
     .catch(err => {
-      res.status(500);
-      res.send(err.toString());
+      console.error(err);
     })
     .done();
   }
