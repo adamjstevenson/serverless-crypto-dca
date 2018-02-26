@@ -5,22 +5,22 @@ require('dotenv').config();
 const twilio = require('twilio');
 const gdax = require('gdax');
 
+// Set up GDAX for buying crypto
+const gdaxClient = new gdax.AuthenticatedClient(
+  process.env.GDAX_API_KEY, 
+  process.env.GDAX_SECRET, 
+  process.env.GDAX_PASSPHRASE, 
+  process.env.GDAX_API_ENDPOINT
+);
+
+// Set up Twilio client for sending SMS
+const twilioClient = twilio(
+  process.env.TWILIO_ACCOUNT_SID, 
+  process.env.TWILIO_AUTH_TOKEN
+);
+
 // Declare Lambda handler
 const handler = (event, context, callback) => {
-  // Set up GDAX for buying crypto
-  const gdaxClient = new gdax.AuthenticatedClient(
-    process.env.GDAX_API_KEY, 
-    process.env.GDAX_SECRET, 
-    process.env.GDAX_PASSPHRASE, 
-    process.env.GDAX_API_ENDPOINT
-  );
-
-  // Set up Twilio client for sending SMS
-  const twilioClient = twilio(
-    process.env.TWILIO_ACCOUNT_SID, 
-    process.env.TWILIO_AUTH_TOKEN
-  );
-
   // Check the latest price of ETH
   gdaxClient.getProductTicker(
     'ETH-USD'
@@ -77,6 +77,6 @@ const handler = (event, context, callback) => {
     })
     .done();
   }
-}
+};
 
 module.exports = { handler }
