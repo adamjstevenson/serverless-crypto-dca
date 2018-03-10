@@ -45,7 +45,7 @@ const handler = (event, context, callback) => {
     const args = {
       'product_id': 'ETH-USD',
       'type': 'market',
-      'side': 'buys',
+      'side': 'buy',
       'size': orderSize
     }
 
