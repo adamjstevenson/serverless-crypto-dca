@@ -14,8 +14,6 @@ Use a Node.js AWS Lambda function to purchase cryptocurrency every day via GDAX 
 
 This is provided as an example, but I'm absolutely not giving investment advice and provide no warranty for this application. You should use at your own risk and be prepared to lose all money that you might choose to invest in any cryptocurrency. As Kai Ryssdal would say, markets go down, too. 📉
 
-## Current status: WIP
+## How does this work?
 
-[2/19/18] This app currently just reports on the current price of ETH every day. I'm trying this out for a few weeks on my own and writing a related blog post before sharing the completed version here. 
-
-Adding support to [place a new buy order](https://docs.gdax.com/#place-a-new-order) is pretty easy if you want to make this happen today, but please be sure to use this carefully! Otherwise, check back in a couple weeks. 😎
+Check out [http://adamjstevenson.com/tutorials/2018/02/25/serverless-nodejs-dollar-cost-averaging-for-crypto-markets.html](the blog post) to get all the details.
