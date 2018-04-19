@@ -16,4 +16,4 @@ This is provided as an example, but I'm absolutely not giving investment advice 
 
 ## How does this work?
 
-Check out [http://adamjstevenson.com/tutorials/2018/02/25/serverless-nodejs-dollar-cost-averaging-for-crypto-markets.html](the blog post) to get all the details.
+Check out [the blog post](http://adamjstevenson.com/tutorials/2018/02/25/serverless-nodejs-dollar-cost-averaging-for-crypto-markets.html) to get all the details.
